@@ -7,3 +7,4 @@ edition = "2021"
 
 [dependencies]
 yew = { version = "0.20", features = ["csr"] }
+material-yew = {version = "0.3", features = ["button", "top-app-bar"]}

@@ -1,5 +1,8 @@
 #![allow(unused)]
 use yew::prelude::*;
+use material_yew::*;
+
+use yew::html;
 
 mod cota;
 use cota::*;
@@ -8,41 +11,45 @@ use cota::*;
 fn app() -> Html {
     html! {
         <>
-            <img src="/static/background.jpg" width="900px" />
-            <img src="/static/pieces/horse.png" width="900px" />
-            <img src="/static/pieces/crown.png" width="900px" />
+            <div>
+            </div>
 
+            <img src="/static/background.jpg" width="900px" />
+            <img src="/static/pieces/horse.png" width="90px" />
+            <img src="/static/pieces/crown.png" width="90px" />
         </>
     }
 }
 
+
+
+
 fn main() {
 
-    let player_name = String::from("Jarvis");
-    let com_name = String::from("COM");
+    let mut board = Board::new();
+    //board.set_to_starting_position();
 
-//    let g = Game::new(player_name, com_name);
-//
-//    let pos = Position::new(8,8);
-//    let mut low_pos = match pos.above() {
-//        Some(i) => i,
-//        None => Position::new(1,1),
-//    };
-//
-//
-//    println!("{}", pos.to_string());
-//    for pos in pos.orthogonals().iter() {
-//        println!("{}", pos.to_string());
-//    }
-//    println!("{}", low_pos.to_string());
+    let p = Piece::Horse(Color::White, position::A1);
+    board.force_place(p);
 
-    let mut b = Board::new();
-    println!("{}", b.to_string());
-    b.to_starting_position();
-    println!("After place");
-    println!("{}", b.to_string());
-
-    println!("{}", b.piece_at(position::A1).unwrap().to_char());
+    println!("Moves: ");
+    match board.get_piece_at(position::A1) {
+        None => {},
+        Some(p) => {
+            for mov in p.get_potential_moves(&board) {
+                println!("{}", mov.to_string());
+                match mov {
+                    Move::Piece(f, t) => {
+                        board.mark(t);
+                    }
+                    _ => {}
+                }
+            }
+        },
+    }
+    println!("{}", board.to_string());
 
 //    yew::Renderer::<App>::new().render();
 }
+
+
