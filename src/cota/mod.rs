@@ -42,5 +42,30 @@ impl Move {
     }
 }
 
+#[cfg(test)]
+mod tests {
+    
+    #[test]
+    fn position_to_direction() {
+
+        let a1 = crate::position::A1;
+        assert_eq!(a1.up().unwrap(), crate::position::A2);
+
+        let a1 = crate::position::A1;
+        assert_eq!(a1.right().unwrap(), crate::position::B1);
+    }
+
+    #[test]
+    fn position_out_of_bounds() {
+
+        let pos1 = crate::position::A1;
+        assert_eq!(pos1.left(), None);
+        assert_eq!(pos1.down(), None);
+
+        let pos2 = crate::position::A10;
+        assert_eq!(pos2.left(), None);
+    }
+}
+
 pub mod color;
 pub use color::Color;

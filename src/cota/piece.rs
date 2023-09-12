@@ -29,7 +29,14 @@ impl Piece {
                     v.push(Move::Piece(p, i));
                 }
             },
-            Piece::Pawn(_, _) => panic!("TODO"),
+            Piece::Pawn(_, _) => {
+                // Forward
+                
+
+                // If across the river, sideways as well 
+
+
+            },
             Piece::Assosciate(_, _) => panic!("TODO"),
             Piece::Queen(_, _) => panic!("TODO"),
             Piece::Cannon(_, _) => panic!("TODO"),

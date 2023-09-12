@@ -100,7 +100,7 @@ pub const I9: Position = Position::new(8, 8);
 pub const I10: Position = Position::new(8, 9);
 
 
-#[derive(Copy, Clone)]
+#[derive(Copy, Clone, Debug, PartialEq)]
 pub struct Position {
     file: u8,
     rank: u8,
