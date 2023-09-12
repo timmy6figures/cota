@@ -122,6 +122,7 @@ impl Board {
     }
 
     pub fn mark(&self, pos: Position) {
+        panic!("TODO");
         // TODO doesn't mark
         match self.spaces[pos.get_rank() as usize][pos.get_file() as usize].get_kind() {
             space::SpaceKind::Empty => {},
