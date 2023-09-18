@@ -78,7 +78,6 @@ mod tests {
         assert_eq!(pos.right().unwrap(), crate::position::B1);
         let pos = crate::position::A1;
         assert_eq!(pos.upper_right().unwrap(), crate::position::B2);
-
     }
 
     #[test]

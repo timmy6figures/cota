@@ -21,22 +21,22 @@ impl Board {
     }
 
     pub fn set_to_starting_position(&mut self) {
-        // Pawn
-        self.force_place( Piece::Pawn(Color::White, position::A4));
-        self.force_place( Piece::Pawn(Color::White, position::C4));
-        self.force_place( Piece::Pawn(Color::White, position::D4));
-        self.force_place( Piece::Pawn(Color::White, position::E4));
-        self.force_place( Piece::Pawn(Color::White, position::F4));
-        self.force_place( Piece::Pawn(Color::White, position::G4));
-        self.force_place( Piece::Pawn(Color::White, position::I4));
+        // Troop
+        self.force_place( Piece::Troop(Color::White, position::A4));
+        self.force_place( Piece::Troop(Color::White, position::C4));
+        self.force_place( Piece::Troop(Color::White, position::D4));
+        self.force_place( Piece::Troop(Color::White, position::E4));
+        self.force_place( Piece::Troop(Color::White, position::F4));
+        self.force_place( Piece::Troop(Color::White, position::G4));
+        self.force_place( Piece::Troop(Color::White, position::I4));
 
-        self.force_place( Piece::Pawn(Color::Black, position::A7));
-        self.force_place( Piece::Pawn(Color::Black, position::C7));
-        self.force_place( Piece::Pawn(Color::Black, position::D7));
-        self.force_place( Piece::Pawn(Color::Black, position::E7));
-        self.force_place( Piece::Pawn(Color::Black, position::F7));
-        self.force_place( Piece::Pawn(Color::Black, position::G7));
-        self.force_place( Piece::Pawn(Color::Black, position::I7));
+        self.force_place( Piece::Troop(Color::Black, position::A7));
+        self.force_place( Piece::Troop(Color::Black, position::C7));
+        self.force_place( Piece::Troop(Color::Black, position::D7));
+        self.force_place( Piece::Troop(Color::Black, position::E7));
+        self.force_place( Piece::Troop(Color::Black, position::F7));
+        self.force_place( Piece::Troop(Color::Black, position::G7));
+        self.force_place( Piece::Troop(Color::Black, position::I7));
 
         // Horse
         self.force_place( Piece::Horse(Color::White, position::B1));
@@ -45,31 +45,31 @@ impl Board {
         self.force_place( Piece::Horse(Color::Black, position::B9));
         self.force_place( Piece::Horse(Color::Black, position::H9));
 
-        // Carrige 
-        self.force_place( Piece::Carriage(Color::White, position::A1));
-        self.force_place( Piece::Carriage(Color::White, position::I1));
+        // Chariot 
+        self.force_place( Piece::Chariot(Color::White, position::A1));
+        self.force_place( Piece::Chariot(Color::White, position::I1));
 
-        self.force_place( Piece::Carriage(Color::Black, position::A9));
-        self.force_place( Piece::Carriage(Color::Black, position::I9));
+        self.force_place( Piece::Chariot(Color::Black, position::A9));
+        self.force_place( Piece::Chariot(Color::Black, position::I9));
         
-        // Cannon 
-        self.force_place( Piece::Cannon(Color::White, position::B3));
-        self.force_place( Piece::Cannon(Color::White, position::H3));
+        // Gun 
+        self.force_place( Piece::Gun(Color::White, position::B3));
+        self.force_place( Piece::Gun(Color::White, position::H3));
 
-        self.force_place( Piece::Cannon(Color::Black, position::B7));
-        self.force_place( Piece::Cannon(Color::Black, position::H7));
+        self.force_place( Piece::Gun(Color::Black, position::B7));
+        self.force_place( Piece::Gun(Color::Black, position::H7));
 
         // Emperor
         self.force_place( Piece::Lord(Color::White, position::E1, false));
         self.force_place( Piece::Lord(Color::Black, position::E9, false));
         
-        // Assosciate
-        self.force_place( Piece::Assosciate(Color::White, position::D1));
-        self.force_place( Piece::Assosciate(Color::Black, position::F9));
+        // Advisor
+        self.force_place( Piece::Advisor(Color::White, position::D1));
+        self.force_place( Piece::Advisor(Color::Black, position::F9));
         
-        // Assosciate
-        self.force_place( Piece::Queen(Color::White, position::F1));
-        self.force_place( Piece::Queen(Color::Black, position::D9));
+        // Marshal
+        self.force_place( Piece::Marshal(Color::White, position::F1));
+        self.force_place( Piece::Marshal(Color::Black, position::D9));
 
         // Elephant
         self.force_place( Piece::Elephant(Color::White, position::G1));

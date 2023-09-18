@@ -3,14 +3,14 @@ use super::*;
 #[derive(Copy, Clone)]
 pub enum Piece {
     Lord(Color, Position, bool),
-    Assosciate(Color, Position),
-    Queen(Color, Position),
-    Cannon(Color, Position),
+    Advisor(Color, Position),
+    Marshal(Color, Position),
+    Gun(Color, Position),
     Elephant(Color, Position),
     Horse(Color, Position),
     Kite(Color, Position),
-    Pawn(Color, Position),
-    Carriage(Color, Position),
+    Troop(Color, Position),
+    Chariot(Color, Position),
 }
 
 impl Piece {
@@ -29,18 +29,17 @@ impl Piece {
                     v.push(Move::Piece(p, i));
                 }
             },
-            Piece::Pawn(_, _) => {
+            Piece::Troop(color, pos) => {
                 // Forward
-                
 
                 // If across the river, sideways as well 
 
 
             },
-            Piece::Assosciate(_, _) => panic!("TODO"),
-            Piece::Queen(_, _) => panic!("TODO"),
-            Piece::Cannon(_, _) => panic!("TODO"),
-            Piece::Carriage(_, _) => panic!("TODO"),
+            Piece::Advisor(_, _) => panic!("TODO"),
+            Piece::Marshal(_, _) => panic!("TODO"),
+            Piece::Gun(_, _) => panic!("TODO"),
+            Piece::Chariot(_, _) => panic!("TODO"),
             Piece::Elephant(_, _) => panic!("TODO"),
             Piece::Horse(_, _) => {
                 if let Some(intermediate) = p.upper_left() {
@@ -109,11 +108,11 @@ impl Piece {
     pub fn get_position(&self) -> Position {
         match *self {
             Piece::Lord(_, p, _) => {p},
-            Piece::Pawn(_, p) => {p},
-            Piece::Assosciate(_, p) => {p},
-            Piece::Queen(_, p) => {p},
-            Piece::Cannon(_, p) => {p},
-            Piece::Carriage(_, p) => {p},
+            Piece::Troop(_, p) => {p},
+            Piece::Advisor(_, p) => {p},
+            Piece::Marshal(_, p) => {p},
+            Piece::Gun(_, p) => {p},
+            Piece::Chariot(_, p) => {p},
             Piece::Elephant(_, p) => {p},
             Piece::Horse(_, p) => {p},
             Piece::Kite(_, p) => {p},
@@ -123,62 +122,74 @@ impl Piece {
     pub fn to_str(&self) -> &'static str {
         match *self {
             Self::Lord(_, _, _) => "Lord",
-            Self::Assosciate(_, _) => "Associate",
-            Self::Queen(_, _) => "Queen",
-            Self::Cannon(_, _) => "Cannon",
+            Self::Advisor(_, _) => "Advisor",
+            Self::Marshal(_, _) => "Marshal",
+            Self::Gun(_, _) => "Gun",
             Self::Horse(_, _) => "Horse",
             Self::Elephant(_, _) => "Elephant", 
             Self::Kite(_, _)=> "Kite", 
-            Self::Pawn(_, _) => "Pawn", 
-            Self::Carriage(_, _) => "Carriage", 
+            Self::Troop(_, _) => "Troop", 
+            Self::Chariot(_, _) => "Chariot", 
         }
     }
 
+    pub fn to_vietnamese_str(&self) -> &'static str {
+        match *self {
+            Self::Lord(_, _, _) => "CHÚA",
+            Self::Advisor(_, _) => "SĨ",
+            Self::Marshal(_, _) => "TƯỚNG",
+            Self::Gun(_, _) => "PHÁO",
+            Self::Horse(_, _) => "NGỰA",
+            Self::Elephant(_, _) => "VOI", 
+            Self::Kite(_, _)=> "DIỀU", 
+            Self::Troop(_, _) => "LÍNH", 
+            Self::Chariot(_, _) => "XE", 
+        }
+    }
     pub fn to_char(&self) -> char {
         match *self {
             Self::Lord(Color::White, _, _) => 'L',
-            Self::Queen(Color::White, _) => 'Q',
-            Self::Cannon(Color::White, _) => 'C',
+            Self::Marshal(Color::White, _) => 'M',
+            Self::Gun(Color::White, _) => 'G',
             Self::Horse(Color::White, _) => 'H',
-            Self::Assosciate(Color::White, _) => 'A',
+            Self::Advisor(Color::White, _) => 'A',
             Self::Elephant(Color::White, _) => 'E', 
             Self::Kite(Color::White, _) => 'K', 
-            Self::Pawn(Color::White, _) => 'P', 
-            Self::Carriage(Color::White, _) => 'C', 
+            Self::Troop(Color::White, _) => 'T', 
+            Self::Chariot(Color::White, _) => 'C', 
 
             Self::Lord(Color::Black, _, _) => 'l',
-            Self::Queen(Color::Black, _) => 'q',
-            Self::Cannon(Color::Black, _) => 'c',
+            Self::Marshal(Color::Black, _) => 'm',
+            Self::Gun(Color::Black, _) => 'g',
             Self::Horse(Color::Black, _) => 'h',
-            Self::Assosciate(Color::Black, _) => 'a',
+            Self::Advisor(Color::Black, _) => 'a',
             Self::Elephant(Color::Black, _) => 'e', 
             Self::Kite(Color::Black, _) => 'k', 
-            Self::Pawn(Color::Black, _) => 'p', 
-            Self::Carriage(Color::Black, _) => 'c', 
+            Self::Troop(Color::Black, _) => 't', 
+            Self::Chariot(Color::Black, _) => 'c', 
         }
     }
 
     pub fn to_fancy_char(&self) -> char {
         match *self {
             Self::Lord(Color::White, _, _) => '♔',
-            Self::Cannon(Color::White, _) => 'C',
-            Self::Queen(Color::White, _) => 'Q',
+            Self::Gun(Color::White, _) => 'C',
+            Self::Marshal(Color::White, _) => 'Q',
             Self::Horse(Color::White, _) => '♘',
-            Self::Assosciate(Color::White, _) => 'A',
+            Self::Advisor(Color::White, _) => 'A',
             Self::Elephant(Color::White, _) => 'E', 
             Self::Kite(Color::White, _) => 'K', 
-            Self::Pawn(Color::White, _) => '♙', 
-            Self::Carriage(Color::White, _) => 'C', 
-
-            Self::Lord(Color::Black, _, _) => '♚',
-            Self::Queen(Color::Black, _) => 'Q',
-            Self::Cannon(Color::Black, _) => 'c',
+            Self::Troop(Color::White, _) => '♙', 
+            Self::Chariot(Color::White, _) => 'C', 
+Self::Lord(Color::Black, _, _) => '♚',
+            Self::Marshal(Color::Black, _) => 'Q',
+            Self::Gun(Color::Black, _) => 'c',
             Self::Horse(Color::Black, _) => '♞',
-            Self::Assosciate(Color::Black, _) => 'a',
+            Self::Advisor(Color::Black, _) => 'a',
             Self::Elephant(Color::Black, _) => 'e', 
             Self::Kite(Color::Black, _) => 'k', 
-            Self::Pawn(Color::Black, _) => '♟', 
-            Self::Carriage(Color::Black, _) => 'c', 
+            Self::Troop(Color::Black, _) => '♟', 
+            Self::Chariot(Color::Black, _) => 'c', 
         }
     }
 }

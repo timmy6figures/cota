@@ -5,3 +5,4 @@ pub enum Color {
     Black,
     White,
 }
+// Green or red
