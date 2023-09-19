@@ -27,27 +27,25 @@ body {
     grid-template-rows: repeat(2, 1fr);
 }
 
+/* Cell fragments */
 .cell-fragment {
     height: 100%;
     width: 100%;
 }
-
 .cell-fragment:nth-child(1) {
     border-right: 3px solid black;
 }
-
 .cell-fragment:nth-child(2) {
     border-bottom: 3px solid black;
 }
-
 .cell-fragment:nth-child(3) {
     border-top: 3px solid black;
 }
-
 .cell-fragment:nth-child(4) {
     border-left: 3px solid black;
 }
 
+/* Cells at edges of the board */
 .cell:not(.river):nth-child(9n-8) > .cell-fragment:nth-child(3) {
     border: none;
 }
@@ -59,6 +57,21 @@ body {
 }
 .cell:not(.river):nth-child(n+91):nth-child(-n+99) > .cell-fragment:nth-child(4) {
     border: none;
+}
+
+/* cells adjacent to river */
+.cell:not(.river):nth-child(n+37):nth-child(-n+45) > .cell-fragment:nth-child(4) {
+    border: none;
+}
+.cell:not(.river):nth-child(n+55):nth-child(-n+63) > .cell-fragment:nth-child(1) {
+    border: none;
+}
+.cell:not(.river):nth-child(n+37):nth-child(-n+45) > .cell-fragment:nth-child(n+3):nth-child(-n+4) {
+    background: blue;
+    z-index: -99;
+}
+.cell:not(.river):nth-child(n+55):nth-child(-n+63) > .cell-fragment:nth-child(n+1):nth-child(-n+2) {
+    background: blue;
 }
 
 .piece {
