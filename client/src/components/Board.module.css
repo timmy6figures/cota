@@ -1,0 +1,52 @@
+.board {
+    display: grid;
+    height: 55vw;
+    width: 45vw;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: repeat(11, 1fr);
+    border: 1px solid black;
+}
+
+.cell.river {
+    background-color: blue;
+}
+
+.cell:not(.river) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+.cell-fragment {
+    height: 100%;
+    width: 100%;
+}
+
+.cell-fragment:nth-child(1) {
+    border-right: 1px solid black;
+}
+
+.cell-fragment:nth-child(2) {
+    border-bottom: 1px solid black;
+}
+
+.cell-fragment:nth-child(3) {
+    border-top: 1px solid black;
+}
+
+.cell-fragment:nth-child(4) {
+    border-left: 1px solid black;
+}
+
+.cell:not(.river):nth-child(9n-8) > .cell-fragment:nth-child(3) {
+    border: none;
+}
+.cell:not(.river):nth-child(9n) > .cell-fragment:nth-child(2) {
+    border: none;
+}
+.cell:not(.river):nth-child(n+1):nth-child(-n+9) > .cell-fragment:nth-child(1) {
+    border: none;
+}
+.cell:not(.river):nth-child(n+91):nth-child(-n+99) > .cell-fragment:nth-child(4) {
+    border: none;
+}

@@ -1,26 +1,10 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {Board, BoardProps} from "./components/Board"
 
-function App() {
+const App = () => {
+  const data: BoardProps = {cells: new Array(10).fill(new Array(9).fill({cell: null}))}
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Board cells={data.cells}></Board>
+  )
 }
 
-export default App;
+export default App
