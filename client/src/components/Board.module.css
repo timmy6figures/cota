@@ -7,18 +7,15 @@ body {
 
 .board {
     display: grid;
-    height: 88vh;
+    height: 80vh;
     width: 72vh;
     grid-template-columns: repeat(9, 1fr);
-    grid-template-rows: repeat(11, 1fr);
+    grid-template-rows: repeat(10, 1fr);
     border: 3px solid black;
 }
 
 .cell {
     position: relative;
-}
-.cell.river {
-    background-color: blue;
 }
 
 .cell:not(.river) {
@@ -55,7 +52,7 @@ body {
 .cell:not(.river):nth-child(n+1):nth-child(-n+9) > .cell-fragment:nth-child(1) {
     border: none;
 }
-.cell:not(.river):nth-child(n+91):nth-child(-n+99) > .cell-fragment:nth-child(4) {
+.cell:not(.river):nth-child(n+81):nth-child(-n+90) > .cell-fragment:nth-child(4) {
     border: none;
 }
 
@@ -63,15 +60,24 @@ body {
 .cell:not(.river):nth-child(n+37):nth-child(-n+45) > .cell-fragment:nth-child(4) {
     border: none;
 }
-.cell:not(.river):nth-child(n+55):nth-child(-n+63) > .cell-fragment:nth-child(1) {
-    border: none;
-}
 .cell:not(.river):nth-child(n+37):nth-child(-n+45) > .cell-fragment:nth-child(n+3):nth-child(-n+4) {
     background: blue;
     z-index: -99;
 }
-.cell:not(.river):nth-child(n+55):nth-child(-n+63) > .cell-fragment:nth-child(n+1):nth-child(-n+2) {
+.cell:not(.river):nth-child(n+46):nth-child(-n+54) > .cell-fragment:nth-child(n+1):nth-child(-n+2) {
     background: blue;
+}
+
+/* Castle */
+.cell:not(.river):nth-child(3) > .cell-fragment:nth-child(2),
+.cell:not(.river):nth-child(12) > .cell-fragment:nth-child(2),
+.cell:not(.river):nth-child(21) > .cell-fragment:nth-child(2) {
+    border-right: 3px solid green;
+}
+.cell:not(.river):nth-child(4) > .cell-fragment:nth-child(3),
+.cell:not(.river):nth-child(13) > .cell-fragment:nth-child(3),
+.cell:not(.river):nth-child(22) > .cell-fragment:nth-child(3) {
+    border-left: 3px solid green;
 }
 
 .piece {
