@@ -1,4 +1,9 @@
-use crate::Position;
+
+mod client;
+use client::*;
+
+mod messages;
+use messages::*;
 
 
 // GET
@@ -14,7 +19,7 @@ fn get_turn_number() -> String {
 }
 
 // Get moves
-fn get_moves(p: Position) -> String {
+fn get_moves(p: String) -> String {
     panic!("TODO");
 }
 
