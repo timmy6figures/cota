@@ -1,12 +1,22 @@
-.board {
-    display: grid;
-    height: 55vw;
-    width: 45vw;
-    grid-template-columns: repeat(9, 1fr);
-    grid-template-rows: repeat(11, 1fr);
-    border: 1px solid black;
+body {
+    background: #c68a12;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+.board {
+    display: grid;
+    height: 88vh;
+    width: 72vh;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: repeat(11, 1fr);
+    border: 3px solid black;
+}
+
+.cell {
+    position: relative;
+}
 .cell.river {
     background-color: blue;
 }
@@ -23,19 +33,19 @@
 }
 
 .cell-fragment:nth-child(1) {
-    border-right: 1px solid black;
+    border-right: 3px solid black;
 }
 
 .cell-fragment:nth-child(2) {
-    border-bottom: 1px solid black;
+    border-bottom: 3px solid black;
 }
 
 .cell-fragment:nth-child(3) {
-    border-top: 1px solid black;
+    border-top: 3px solid black;
 }
 
 .cell-fragment:nth-child(4) {
-    border-left: 1px solid black;
+    border-left: 3px solid black;
 }
 
 .cell:not(.river):nth-child(9n-8) > .cell-fragment:nth-child(3) {
@@ -49,4 +59,18 @@
 }
 .cell:not(.river):nth-child(n+91):nth-child(-n+99) > .cell-fragment:nth-child(4) {
     border: none;
+}
+
+.piece {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    height: 40%;
+    width: 40%;
+    background: white;
+    border: 1px solid white;
+    border-radius: 50%;
+    padding: 5px;
 }
