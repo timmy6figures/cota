@@ -1,29 +1,10 @@
 #![allow(unused)]
-use yew::prelude::*;
-use material_yew::*;
-
-use yew::html;
 
 mod cota;
 use cota::*;
 
 mod api;
-
-#[function_component(App)]
-fn app() -> Html {
-    html! {
-        <>
-            <div>
-            </div>
-            <img src="/static/background.jpg" width="900px" />
-            <img src="/static/pieces/horse.png" width="90px" />
-            <img src="/static/pieces/crown.png" width="90px" />
-        </>
-    }
-}
-
-
-
+use crate::api::*;
 
 fn main() {
 
@@ -51,7 +32,10 @@ fn main() {
     }
     println!("{}", board.to_string());
 
-    yew::Renderer::<App>::new().render();
+    
+    
+    
+
 }
 
 
