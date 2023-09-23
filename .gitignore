@@ -1,5 +1,6 @@
 /target
 /dist
 /src/dist
-
+/server/target
+/dist
 /src/NetrwTreeListing
