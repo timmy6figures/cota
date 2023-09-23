@@ -1,17 +1,26 @@
-body {
-    background: #c68a12;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.board {
+    height: 100%;
+    position: relative;
 }
 
-.board {
+.realBoard, .cellLayer {
+    height: 80%;
+    aspect-ratio: 9 / 10;
     display: grid;
-    height: 80vh;
-    width: 72vh;
     grid-template-columns: repeat(9, 1fr);
     grid-template-rows: repeat(10, 1fr);
+}
+
+.realBoard {
     border: 3px solid black;
+}
+
+.cellLayer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 3px solid black;
+    z-index: 999;
 }
 
 .cell {
@@ -65,7 +74,71 @@ body {
     background: blue;
 }
 
+.cellLayer > div {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+.cellLayer > div > div {
+    height: 100%;
+    width: 100%;
+}
+
 /* Castle */
+.cellLayer > div:nth-child(3) > div:nth-child(2),
+.cellLayer > div:nth-child(3) > div:nth-child(4),
+.cellLayer > div:nth-child(12) > div:nth-child(2),
+.cellLayer > div:nth-child(12) > div:nth-child(4),
+.cellLayer > div:nth-child(21) > div:nth-child(2),
+.cellLayer > div:nth-child(21) > div:nth-child(4) {
+    border-right: 3px solid green;
+}
+
+.cellLayer > div:nth-child(31) > div:nth-child(1),
+.cellLayer > div:nth-child(31) > div:nth-child(2),
+.cellLayer > div:nth-child(32) > div:nth-child(1),
+.cellLayer > div:nth-child(32) > div:nth-child(2),
+.cellLayer > div:nth-child(33) > div:nth-child(1),
+.cellLayer > div:nth-child(33) > div:nth-child(2) {
+    border-top: 3px solid green;
+}
+
+.cellLayer > div:nth-child(7) > div:nth-child(1),
+.cellLayer > div:nth-child(7) > div:nth-child(3),
+.cellLayer > div:nth-child(16) > div:nth-child(1),
+.cellLayer > div:nth-child(16) > div:nth-child(3),
+.cellLayer > div:nth-child(25) > div:nth-child(1),
+.cellLayer > div:nth-child(25) > div:nth-child(3) {
+    border-left: 3px solid green;
+}
+
+.cellLayer > div:nth-child(66) > div:nth-child(2),
+.cellLayer > div:nth-child(66) > div:nth-child(4),
+.cellLayer > div:nth-child(75) > div:nth-child(2),
+.cellLayer > div:nth-child(75) > div:nth-child(4),
+.cellLayer > div:nth-child(84) > div:nth-child(2),
+.cellLayer > div:nth-child(84) > div:nth-child(4) {
+    border-right: 3px solid red;
+}
+
+.cellLayer > div:nth-child(58) > div:nth-child(3),
+.cellLayer > div:nth-child(58) > div:nth-child(4),
+.cellLayer > div:nth-child(59) > div:nth-child(3),
+.cellLayer > div:nth-child(59) > div:nth-child(4),
+.cellLayer > div:nth-child(60) > div:nth-child(3),
+.cellLayer > div:nth-child(60) > div:nth-child(4) {
+    border-bottom: 3px solid red;
+}
+
+.cellLayer > div:nth-child(70) > div:nth-child(1),
+.cellLayer > div:nth-child(70) > div:nth-child(3),
+.cellLayer > div:nth-child(79) > div:nth-child(1),
+.cellLayer > div:nth-child(79) > div:nth-child(3),
+.cellLayer > div:nth-child(88) > div:nth-child(1),
+.cellLayer > div:nth-child(88) > div:nth-child(3) {
+    border-left: 3px solid red;
+}
 
 .piece {
     position: absolute;
