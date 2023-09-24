@@ -10,19 +10,19 @@
 
 ```
 {
-    dataType: null | string,
+    data_type: null | string,
     data: Object
 }
 ```
 
-> In-ward Data Types
+> Inbound Data Types
 
 ```gameStatusObj```
 ```
 {
-    dataType: "gameStatusObj"
+    data_type: "gameStatusObj"
     data:{
-        playerId: string,
+        player_id: string,
         turn: boolean,
         charge: integer,
         dead: object[],
@@ -37,10 +37,10 @@ The ```gameStatus``` has to be sended to the players whenever either of them mov
 ```gameInfoObj```
 ```
 {
-    dataType: null | "gameInfoObj",
+    data_type: null | "gameInfoObj",
     data: {
-        gameId: string,
-        hostId: string,
+        game_id: string,
+        host_id: string,
         password: string
     }
 }
@@ -49,24 +49,24 @@ The ```gameStatus``` has to be sended to the players whenever either of them mov
 ```joinGameConfirmObj```
 ```
 {
-    dataType: null | "joinGameConfirmObj",
+    data_type: null | "joinGameConfirmObj",
     data: {
-        gameId: string,
-        hostId: string,
-        jointId: string,
+        game_id: string,
+        host_id: string,
+        join_id: string,
         confirm: boolean
     }
 }
 ```
 
-> Out-going Data Types
+> Outbound Data Types
 
 ```createGameObj```
 ```
 {
-    dataType: null | "createGameObj",
+    data_type: null | "createGameObj",
     data: {
-        hostId: string,
+        host_id: string,
         password: string
     }
 }
@@ -75,11 +75,11 @@ The ```gameStatus``` has to be sended to the players whenever either of them mov
 ```joinGameObj```
 ```
 {
-    dataType: null | "joinGameObj",
+    data_type: null | "joinGameObj",
     data: {
-        gameId: string,
+        game_id: string,
         password: string,
-        guestId: string
+        guest_id: string
     }
 }
 ```
@@ -87,13 +87,13 @@ The ```gameStatus``` has to be sended to the players whenever either of them mov
 ```startGameObj```
 ```
 {
-    dataType: null | "startGameObj"
+    data_type: null | "startGameObj"
     data: {
-        gameId: string,
-        hostId: string,
-        guestId: string,
+        game_id: string,
+        host_id: string,
+        guest_id: string,
         ready: boolean,
-        startGame: boolean
+        start_game: boolean
     }
 }
 ```
@@ -101,9 +101,9 @@ The ```gameStatus``` has to be sended to the players whenever either of them mov
 ```exitGameObj```
 ```
 {
-    dataType: null | "exitGameObj",
+    data_type: null | "exitGameObj",
     data: {
-        gameId: string
+        game_id: string
     }
 }
 ```
@@ -111,10 +111,10 @@ The ```gameStatus``` has to be sended to the players whenever either of them mov
 ```playerMoveObj```
 ```
 {
-    dataType: null | "playerMoveObj",
+    data_type: null | "playerMoveObj",
     data: {
-        gameId: string,
-        playerId: string,
+        game_id: string,
+        player_id: string,
         piece: object,
         to: string
         // from: string,
