@@ -12,5 +12,6 @@ fn main() {
     
     //websocket::run();
     api::run();
+    gameManager::run();
 
 }

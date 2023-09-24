@@ -12,11 +12,12 @@ pub struct GameInfo {
     data: String
 }
 impl GameInfo {
-    pub fn new(data_type: String, data: String) -> GameInfo {
-       GameInfo{
-        data_type,
-        data
-       }
+    pub fn new(data: String) -> GameInfo {
+        let data_type = String::from("gameInfo");
+        GameInfo{
+            data_type,
+            data
+        }
     }
 }
 
@@ -39,7 +40,7 @@ impl JoinGameConfirm {
 
 #[get("/test")]
 pub async fn test() -> HttpResponse {
-    let g: GameInfo = GameInfo::new(String::from("type"), String::from("data"));
+    let g: GameInfo = GameInfo::new(String::from("Game One"));
     HttpResponse::Ok()
         .content_type("application/json")
         .json(g)
@@ -48,7 +49,7 @@ pub async fn test() -> HttpResponse {
 // Returns a GameInfo object
 #[post("/createGame")]
 pub async fn create_game() -> HttpResponse {
-    let g: GameInfo = GameInfo::new(String::from("type"), String::from("data"));
+    let g: GameInfo = GameInfo::new(String::from("Game One"));
     let g: GameInfo = gameManager::new_game();
     HttpResponse::Ok()
         .content_type("application/json")
