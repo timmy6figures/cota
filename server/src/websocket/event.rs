@@ -1,5 +1,5 @@
 use tokio_tungstenite::tungstenite::Result;
-use crate::WebSocketStream;
+use tokio_tungstenite::WebSocketStream;
 use tokio::net::{TcpListener, TcpStream};
 use tokio_tungstenite::tungstenite::Error as WsError;
 

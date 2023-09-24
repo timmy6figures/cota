@@ -1,12 +1,11 @@
-mod tests;
-use tests
-
-
 pub mod space;
 pub use space::Space;
 
 pub mod board;
 pub use board::Board;
+
+pub mod color;
+pub use color::Color;
 
 pub mod game;
 pub use game::Game;
@@ -22,6 +21,7 @@ pub use rank::Rank;
 
 pub mod position;
 pub use position::Position;
+pub mod tests;
 
 pub enum Move {
     Piece(Position, Position),
@@ -46,12 +46,6 @@ impl Move {
             }
     }
 }
-
-
-pub mod color;
-pub use color::Color;
-
-
 
 //fn main() {
 //

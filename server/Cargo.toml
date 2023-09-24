@@ -6,6 +6,9 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+actix-web = "*"
+actix-rt = "*"
+serde = { version = "*", features = ["derive"] }
 tokio-tungstenite = "*"
 tokio = { version = "1.27.0", default-features = false, features = ["io-std", "macros", "net", "rt-multi-thread", "time"] }
 log = "0.4.17"
