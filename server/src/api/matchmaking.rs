@@ -4,7 +4,26 @@ use actix_web::{middleware, App, HttpServer};
 use actix_web::{get, post};
 use serde::{Deserialize, Serialize};
 
-use crate::gameManager;
+use crate::game_manager;
+
+#[derive(Debug, Deserialize, Serialize)]
+pub struct GeneralObj {
+    data_type: String,
+    message_data: MessageType,
+}    
+
+#[derive(Debug, Deserialize, Serialize)]
+pub enum MessageType {
+    GameInfo{
+        host_id: String,
+        password: String
+    },
+    JoinGameConfirm {
+        game_id: String,
+        password: String,
+        guest_id: String
+    }
+}
 
 #[derive(Debug, Deserialize, Serialize)]
 pub struct GameInfo {
@@ -12,11 +31,11 @@ pub struct GameInfo {
     data: String
 }
 impl GameInfo {
-    pub fn new(data: String) -> GameInfo {
+    pub fn new(data: String) -> GeneralObj {
         let data_type = String::from("gameInfo");
-        GameInfo{
+        GeneralObj {
             data_type,
-            data
+            message_data: MessageType::GameInfo{host_id: String::from("f"), password: String::from("F")}
         }
     }
 }
@@ -27,12 +46,12 @@ pub struct JoinGameConfirm {
     data: String
 }
 impl JoinGameConfirm {
-    pub fn new() -> JoinGameConfirm {
+    pub fn new() -> GeneralObj {
         let data_type = String::from("joinGameConfirm");
         let data = String::from("success");
-        JoinGameConfirm {
+        GeneralObj {
             data_type,
-            data
+            message_data: MessageType::JoinGameConfirm{game_id: String::from("f"), password: String::from("F"), guest_id: String::from("gID")}
         }
     }
 }
@@ -40,7 +59,7 @@ impl JoinGameConfirm {
 
 #[get("/test")]
 pub async fn test() -> HttpResponse {
-    let g: GameInfo = GameInfo::new(String::from("Game One"));
+    let g: GeneralObj = GameInfo::new(String::from("Game One"));
     HttpResponse::Ok()
         .content_type("application/json")
         .json(g)
@@ -49,8 +68,7 @@ pub async fn test() -> HttpResponse {
 // Returns a GameInfo object
 #[post("/createGame")]
 pub async fn create_game() -> HttpResponse {
-    let g: GameInfo = GameInfo::new(String::from("Game One"));
-    let g: GameInfo = gameManager::new_game();
+    let g: GeneralObj = game_manager::new_game();
     HttpResponse::Ok()
         .content_type("application/json")
         .json(g)
@@ -58,8 +76,8 @@ pub async fn create_game() -> HttpResponse {
 
 #[post("/joinGame")]
 pub async fn join_game() -> HttpResponse {
-    let g: JoinGameConfirm = JoinGameConfirm::new();
+    let j: GeneralObj = game_manager::join_game();
     HttpResponse::Ok()
         .content_type("application/json")
-        .json(g)
+        .json(j)
 }

@@ -6,10 +6,10 @@ pub fn run() {
 
 }
 
-pub fn new_game() -> GameInfo {
+pub fn new_game() -> GeneralObj {
     GameInfo::new(String::from("Game One"))
 }
 
-pub fn join_game() -> JoinGameConfirm {
+pub fn join_game() -> GeneralObj {
     JoinGameConfirm::new()
 }
