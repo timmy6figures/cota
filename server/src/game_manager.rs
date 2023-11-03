@@ -1,15 +1,9 @@
-use super::api::*;
 use super::cota::Game;
 
-pub fn run() {
+pub fn init() {
     let games: Vec<Game> = Vec::new();
-
 }
 
-pub fn new_game() -> GeneralObj {
-    GameInfo::new(String::from("Game One"))
+pub fn new_game() -> u32 {
 }
 
-pub fn join_game() -> GeneralObj {
-    JoinGameConfirm::new()
-}
